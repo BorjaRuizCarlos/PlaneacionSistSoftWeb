@@ -16,8 +16,14 @@
             <div class = "input-box">
                 <input type="password" placeholder="Password">
             </div>
-            <button class="btn" onclick="window.location.href='../pages/userHome.html'">Login</button>
+            <button class="btn" onclick="login(event)">Login</button>
         </form>
     </Div>
 </body>
 </html>
+<script>
+    function login(event) {
+    event.preventDefault();
+    window.location.href='../pages/userHome.html';
+}
+</script>
