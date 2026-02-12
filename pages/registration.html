@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/registration.css">
+    <title>Registration</title>
+</head>
+<body>
+    <Div class =  "wrapper">
+        <form action="">
+            <h1>Welcome to the Registration Page</h1>
+            <div class = "input-box">
+                <input type="text" placeholder="New username"> 
+            </div> 
+            <div class = "input-box">
+                <input type="password" placeholder="Password">
+            </div>
+            <div>
+                <input type="password" placeholder="Confirm password">
+            </div>
+            <button class="btn" onclick="Register(event)">Register</button>
+            <div>
+                <p>Already have an account? <a href="../index.html">Continue to login</a></p>
+            </div>
+        </form>
+    </Div>
+</body>
+</html>
+<script>
+    function Register(event) {
+        event.preventDefault();
+        window.location.href="../index.html";
+    }
+</script>
