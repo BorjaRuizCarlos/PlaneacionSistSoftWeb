@@ -19,17 +19,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/pages/userHome.html', (req, res) => {
-  const filePath = path.join(__dirname, 'pages', 'userHome.html');
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      res.status(500).send('Error loading file');
-      return;
-    }
-    res.send(data);
-  });
-});
-
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -50,3 +50,9 @@ body {
     border-radius: 5px;
     margin-top: 20px;
 }
+
+.wrapper p {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
