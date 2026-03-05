@@ -301,16 +301,12 @@
       ulAb.appendChild(li);
     }
 
-    // Base stats (hp, attack, defense, special-attack, special-defense, speed)
-    const ulStats = $('.stats-list');
-    const ORDER = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed'];
-    const map = Object.fromEntries(detail.stats.map(s => [s.stat.name, s.base_stat]));
-    for (const key of ORDER) {
-      const li = document.createElement('li');
-      const label = key.replace('-', ' ');
-      li.innerHTML = `<span>${label}</span><strong>${map[key] ?? '—'}</strong>`;
-      ulStats.appendChild(li);
-    }
+    // Make the card clickable — navigate to the detail page with this Pokémon's ID
+    const card = $('.poke-card');
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      window.location.href = `pokemonDetail.html?id=${detail.id}`;
+    });
 
     return node;
   }

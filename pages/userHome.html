@@ -10,30 +10,30 @@
 </head>
 <body>
     <!-- Auth guard: redirect to login if no token -->
-    <script src="../auth.js"></script>
+    <script src="../scripts/auth.js"></script>
 
     <!-- Header -->
     <div id="site-header"></div>
 
     <main class="main-content">
         <h1>Pokédex</h1>
-        <p class="pokedex-subtitle">Datos en vivo desde <a href="https://pokeapi.co/" target="_blank">PokeAPI</a></p>
+        <p class="pokedex-subtitle">Live data from <a href="https://pokeapi.co/" target="_blank">PokeAPI</a></p>
 
         <!-- Controles: buscador y filtro -->
         <section class="controls">
             <form id="controlsForm" autocomplete="off">
                 <div class="control-row">
-                    <input id="q" type="search" placeholder="Buscar por nombre o ID… (ej: pikachu o 25)" />
+                    <input id="q" type="search" placeholder="Search by name or ID… (e.g: pikachu or 25)" />
                     <select id="typeFilter">
-                        <option value="">Todos los tipos</option>
+                        <option value="">All types</option>
                     </select>
                     <select id="sortBy">
                         <option value="id-asc">ID ↑</option>
                         <option value="id-desc">ID ↓</option>
-                        <option value="name-asc">Nombre A→Z</option>
-                        <option value="name-desc">Nombre Z→A</option>
+                        <option value="name-asc">Name A→Z</option>
+                        <option value="name-desc">Name Z→A</option>
                     </select>
-                    <button type="submit" class="btn-apply">Buscar</button>
+                    <button type="submit" class="btn-apply">Search</button>
                 </div>
             </form>
         </section>
@@ -43,7 +43,7 @@
 
         <!-- Botón cargar más -->
         <div class="load-more-wrap">
-            <button id="loadMore" class="btn-load-more" hidden>Cargar más</button>
+            <button id="loadMore" class="btn-load-more" hidden>Load more</button>
         </div>
     </main>
 
@@ -60,13 +60,9 @@
                 </header>
                 <div class="types"></div>
                 <div class="abilities">
-                    <strong>Habilidades:</strong>
+                    <strong>Abilities:</strong>
                     <ul class="ability-list"></ul>
                 </div>
-                <details class="stats">
-                    <summary>Stats base</summary>
-                    <ul class="stats-list"></ul>
-                </details>
             </div>
         </article>
     </template>
@@ -91,7 +87,7 @@
     <div id="site-footer"></div>
 
     <!-- PokeAPI script -->
-    <script src="../pokeapi.js" defer></script>
+    <script src="../scripts/pokeapi.js" defer></script>
 </body>
 </html>
 <script>

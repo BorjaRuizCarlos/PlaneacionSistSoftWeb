@@ -1,0 +1,86 @@
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/pokemonDetail.css">
+    <link rel="stylesheet" href="../components/componentStyles/header.css">
+    <link rel="stylesheet" href="../components/componentStyles/footer.css">
+    <title>Pokémon Detail</title>
+</head>
+<body>
+    <!-- Auth guard: redirect to login if no token -->
+    <script src="../scripts/auth.js"></script>
+
+    <!-- Header -->
+    <div id="site-header"></div>
+
+    <main class="detail-content">
+
+        <!-- Back button to return to the Pokédex list -->
+        <a href="userHome.html" class="back-link">← Back to pokedex</a>
+
+        <!-- Loading message shown while we fetch data -->
+        <div id="loading" class="loading-msg">Loading Pokémon…</div>
+
+        <!-- Error message shown if the Pokémon is not found -->
+        <div id="error" class="error-msg" hidden>
+            <p>Pokémon not found.</p>
+            <a href="userHome.html">Back to pokedex</a>
+        </div>
+
+        <!-- Main detail card (hidden until data loads) -->
+        <section id="pokemon-detail" class="detail-card" hidden>
+
+            <!-- Top section: image + basic info side by side -->
+            <div class="detail-top">
+                <div class="detail-img-wrap">
+                    <img id="pokemon-img" src="" alt="" width="300" height="300" />
+                </div>
+                <div class="detail-info">
+                    <h1 id="pokemon-name"></h1>
+                    <span id="pokemon-id" class="pokemon-id-badge"></span>
+                    <div id="pokemon-types" class="types"></div>
+                </div>
+            </div>
+
+            <!-- Abilities section -->
+            <section class="detail-section">
+                <h2>Abilities</h2>
+                <ul id="pokemon-abilities" class="ability-list"></ul>
+            </section>
+
+            <!-- Base stats section -->
+            <section class="detail-section">
+                <h2>Base Stats</h2>
+                <ul id="pokemon-stats" class="stats-list"></ul>
+            </section>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Script that fetches and displays the Pokémon -->
+    <script src="../scripts/pokemonDetail.js" defer></script>
+</body>
+</html>
+<script>
+/*Load header component*/
+async function loadHeader(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+  const script = document.createElement('script');
+  script.src = '../components/header.js';
+  document.body.appendChild(script);
+}
+
+async function loadFooter(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+}
+
+loadHeader('site-header', '../components/header.html');
+loadFooter('site-footer', '../components/footer.html');
+</script>

@@ -1,0 +1,295 @@
+/* ========== Reset & base (same as userHome) ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Type colour variables (reused from userHome) */
+:root {
+    --t-normal:   #a8a77a;
+    --t-fire:     #ee8130;
+    --t-water:    #6390f0;
+    --t-electric: #f7d02c;
+    --t-grass:    #7ac74c;
+    --t-ice:      #96d9d6;
+    --t-fighting: #c22e28;
+    --t-poison:   #a33ea1;
+    --t-ground:   #e2bf65;
+    --t-flying:   #a98ff3;
+    --t-psychic:  #f95587;
+    --t-bug:      #a6b91a;
+    --t-rock:     #b6a136;
+    --t-ghost:    #735797;
+    --t-dragon:   #6f35fc;
+    --t-dark:     #705746;
+    --t-steel:    #b7b7ce;
+    --t-fairy:    #d685ad;
+}
+
+/*Body*/
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: #0f0f1a;
+    color: #e8ecff;
+}
+
+body::after {
+    background-image: url('../imgs/userHomeBackground.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    content: "";
+    opacity: 0.4;
+    top: 110px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+/*  Main wrapper  */
+.detail-content {
+    flex: 1;
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: #ef5350;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .95rem;
+    transition: color .2s;
+}
+
+.back-link:hover {
+    color: #ff7b79;
+    text-decoration: underline;
+}
+
+/* Loading & error states */
+.loading-msg {
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 1.1rem;
+    color: #9aa3c7;
+}
+
+.error-msg {
+    text-align: center;
+    padding: 3rem 0;
+    color: #ff8888;
+    font-size: 1.1rem;
+}
+
+.error-msg a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #ef5350;
+    font-weight: 600;
+}
+
+/* Detail card (the main container) */
+.detail-card {
+    background: linear-gradient(180deg, #161b2e, #101425);
+    border: 1px solid rgba(127,127,127,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 1.5rem;
+}
+
+/* Top row: image + info */
+.detail-top {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Image wrapper */
+.detail-img-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(120px 60px at 50% 45%, rgba(255,255,255,.08), transparent);
+}
+
+.detail-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,.4));
+}
+
+/* Info column */
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.detail-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: capitalize;
+    color: #fff;
+    margin: 0;
+}
+
+.pokemon-id-badge {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    color: #9aa3c7;
+    background: rgba(127,127,127,0.15);
+    border-radius: 999px;
+    padding: .2rem .7rem;
+    font-size: 1rem;
+    width: fit-content;
+}
+
+/* Type chips (same classes as userHome) */
+.types {
+    display: flex;
+    gap: .45rem;
+    flex-wrap: wrap;
+    margin-top: .25rem;
+}
+
+.type-chip {
+    --bg: #555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 0 .75rem;
+    border-radius: 999px;
+    background: var(--bg);
+    color: #fff;
+    font-size: .88rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: .2px;
+}
+
+.type-chip--normal   { --bg: var(--t-normal); color: #222; }
+.type-chip--fire     { --bg: var(--t-fire); }
+.type-chip--water    { --bg: var(--t-water); }
+.type-chip--electric { --bg: var(--t-electric); color: #222; }
+.type-chip--grass    { --bg: var(--t-grass); color: #222; }
+.type-chip--ice      { --bg: var(--t-ice); color: #222; }
+.type-chip--fighting { --bg: var(--t-fighting); }
+.type-chip--poison   { --bg: var(--t-poison); }
+.type-chip--ground   { --bg: var(--t-ground); color: #222; }
+.type-chip--flying   { --bg: var(--t-flying); }
+.type-chip--psychic  { --bg: var(--t-psychic); }
+.type-chip--bug      { --bg: var(--t-bug); color: #222; }
+.type-chip--rock     { --bg: var(--t-rock); color: #222; }
+.type-chip--ghost    { --bg: var(--t-ghost); }
+.type-chip--dragon   { --bg: var(--t-dragon); }
+.type-chip--dark     { --bg: var(--t-dark); }
+.type-chip--steel    { --bg: var(--t-steel); color: #222; }
+.type-chip--fairy    { --bg: var(--t-fairy); }
+
+/* Sections (Abilities, Stats) */
+.detail-section {
+    margin-top: 1.25rem;
+}
+
+.detail-section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #dde;
+    margin-bottom: .6rem;
+    border-bottom: 1px solid rgba(127,127,127,0.15);
+    padding-bottom: .35rem;
+}
+
+/* Ability list */
+.ability-list {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ability-list li {
+    padding: .35rem .7rem;
+    border-radius: 10px;
+    background: rgba(127,127,127,0.15);
+    color: #bbc;
+    font-size: .92rem;
+    text-transform: capitalize;
+}
+
+/* Stats list */
+.stats-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem .75rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.stats-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .4rem .6rem;
+    background: rgba(127,127,127,0.1);
+    border-radius: 10px;
+    font-size: .9rem;
+    color: #bbc;
+    text-transform: capitalize;
+}
+
+.stats-list li strong {
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .detail-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-img-wrap {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .detail-info {
+        align-items: center;
+    }
+
+    .types {
+        justify-content: center;
+    }
+
+    .stats-list {
+        grid-template-columns: 1fr;
+    }
+}
