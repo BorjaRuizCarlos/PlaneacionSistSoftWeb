@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/pokemonBattle.css">
+    <link rel="stylesheet" href="../components/componentStyles/header.css">
+    <link rel="stylesheet" href="../components/componentStyles/footer.css">
+    <title>PokemonBattle</title>
+</head>
+<body>
+    <!-- Auth guard: redirect to login if no token -->
+    <script src="../scripts/auth.js"></script>
+
+    <div id="site-header"></div>
+
+    <main class="main-content">
+        <h1>PokemonBattle</h1>
+        <datalist id="pokemon-list"></datalist>
+
+        <div id="selection-screen" class="screen active">
+            <h1>Choose Your Pokémon</h1>
+            <div class="inputs">
+                <input type="text" id="poke1-input" list="pokemon-list" placeholder="Pokémon 1 (ej. pikachu)">
+                <p>VS</p>
+                <input type="text" id="poke2-input" list="pokemon-list" placeholder="Pokémon 2 (ej. charizard)">
+            </div>
+            <button onclick="iniciarBatalla()">Start Battle</button>
+            <p id="error-msg" style="color: red;"></p>
+        </div>
+      
+        <div id="battle-screen" class="screen">
+            <h2>Simulation in Progress...</h2>
+
+            <div class="arena">
+                <div class="pokemon-card" id="card-p1">
+                    <h3 id="p1-name">Pokémon 1</h3>
+                    <img id="p1-img" src="" alt="P1">
+                    <div class="hp-bar-container">
+                        <div id="p1-hp-bar" class="hp-bar"></div>
+                    </div>
+                    <p>HP: <span id="p1-hp-text">100</span>%</p>
+                </div>
+              
+                <div id="narrator-box">
+                    <h3 id="narrator-text">Preparing the battle!</h3>
+                </div>
+              
+                <div class="pokemon-card" id="card-p2">
+                    <h3 id="p2-name">Pokemon 2</h3>
+                    <img id="p2-img" src="" alt="P2">
+                    <div class="hp-bar-container">
+                        <div id="p2-hp-bar" class="hp-bar"></div>
+                    </div>
+                    <p>HP: <span id="p2-hp-text">100</span>%</p>
+                </div>
+            </div>
+          
+            <div id="battle-log">
+                <h3>Move History</h3>
+                <ul id="log-list"></ul>
+            </div>
+        </div>
+      
+        <div id="winner-screen" class="screen">
+            <h1>Winner!</h1>
+            <h2 id="winner-name">---</h2>
+            <img id="winner-img" src="" alt="Ganador">
+            <br>
+            <button onclick="location.reload()">Simulate another battle</button>
+        </div>
+        <script src="../scripts/pokefight.js"></script>
+      </main>
+
+    <div id="site-footer"></div>
+
+</body>
+</html>
+<script>
+/*Load header component*/
+async function loadHeader(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+  // Load  header.js after HTML
+  const script = document.createElement('script');
+  script.src = '../components/header.js';
+  document.body.appendChild(script);
+}
+
+async function loadFooter(id, url) {
+  const response = await fetch(url);
+  document.getElementById(id).innerHTML = await response.text();
+}
+
+loadHeader('site-header', '../components/header.html');
+loadFooter('site-footer', '../components/footer.html');
+</script>
